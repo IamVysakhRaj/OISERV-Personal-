@@ -1,0 +1,60 @@
+
+
+.container {
+    position: relative; /* Make the container relative for absolute positioning of the overlay */
+    max-width: 500px; /* Set a max width for the form */
+    margin: auto; /* Center the form */
+    padding: 25px; /* Add some padding around the form */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow of content */
+}
+.propertypage{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.container::before {
+    content: ""; /* Create a pseudo-element */
+    position: absolute; /* Position it absolutely */
+    top: 0; /* Align it to the top */
+    left: 0; /* Align it to the left */
+    right: 0; /* Stretch to the right */
+    bottom: 0; /* Stretch to the bottom */
+    background-color: rgba(0, 0, 0, 0.5); /* Increase opacity for a darker overlay */
+    z-index: 1; /* Ensure it sits above the background image but below the content */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+h1.ProductPropertiesPage {
+    position: relative; /* Make the title position relative to sit above the overlay */
+    z-index: 2; /* Sit above the overlay */
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+    color: #fffcfc; /* Change color to white for better contrast */
+}
+
+.form-control,
+.form-select,
+.btn,
+.form-check {
+    border-radius: 2px; /* Rounded input fields */
+    z-index: 2; /* Ensure form fields sit above the overlay */
+    position: relative; /* Position relative to ensure they stack above the overlay */
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    z-index: 2; /* Ensure textarea sits above the overlay */
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #e5e6e7;
+}
+
+label {
+    font-weight: bold; /* Make the label text bold */
+    color: #ffffff; /* Set label color to white for better contrast */
+    position: relative; /* Position relative to the parent */
+    z-index: 2; /* Ensure labels sit above the overlay */
+    display: block; /* Ensure labels take full width and start on a new line */
+    margin-bottom: 0px; /* Add some space below the labels */
+}

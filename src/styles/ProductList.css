@@ -1,0 +1,41 @@
+.card-container {
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto multiple lines */
+    justify-content: center; /* Center items horizontally */
+    padding: 20px; /* Adds space around the container */
+}
+
+.card {
+    background-color: white; /* Card background color */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 10px; /* Space between cards */
+    width: 200px; /* Fixed width for cards */
+    transition: transform 0.2s; /* Animation for hover effect */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.card img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-top-left-radius: 8px; /* Match card corners */
+    border-top-right-radius: 8px;
+}
+
+.card-title {
+    font-size: 1.2em; /* Font size for titles */
+    margin: 10px; /* Space around title */
+    text-align: center; /* Center text */
+}
+
+.card-link {
+    display: block; /* Make the entire card clickable */
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+}

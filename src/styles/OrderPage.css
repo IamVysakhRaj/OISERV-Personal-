@@ -1,0 +1,63 @@
+.OrderPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better contrast */
+}
+
+.OrderPage-form {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  width: 100%; /* Full width for responsiveness */
+  max-width: 500px; /* Limit max width */
+  backdrop-filter: blur(10px); /* Optional blur effect */
+}
+
+.OrderPage h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333; /* Dark text color */
+  font-family: 'Arial', sans-serif; /* Font style */
+}
+
+label {
+  font-weight: bold;
+  color: #555; /* Slightly lighter text color */
+}
+
+.OrderPage-select,
+.OrderPage-textarea,
+.OrderPage-button {
+  width: 100%; /* Full width for inputs */
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc; /* Light border */
+  padding: 10px;
+  font-size: 16px; /* Font size */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition effect */
+}
+
+.OrderPage-select:focus,
+.OrderPage-textarea:focus {
+  border-color: #007bff; /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Shadow on focus */
+  outline: none; /* Remove default outline */
+}
+
+.OrderPage-button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor */
+  font-weight: bold; /* Bold text */
+  margin-top: 20px;
+  padding: 12px; /* Increased padding */
+  transition: background-color 0.3s; /* Transition for background color */
+}
+
+.OrderPage-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
