@@ -1,36 +1,21 @@
-.cart-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: auto;
+.card {
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+    display: flex; /* Use flexbox to control the layout */
+    flex-direction: column; /* Stack content vertically */
+    height: 300px;
 }
 
-.cart-title {
-    text-align: center;
-    margin-bottom: 20px;
+.card:hover {
+    transform: translateY(-8px); /* Move the card up slightly on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
-.cart-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.card-body {
+    flex-grow: 1; /* Allow the card body to take the available space */
 }
 
-.cart-item-image {
-    width: 200px;
-    height: 250px;
-    margin-right: 20px;
-}
-
-.cart-item-details {
-    flex-grow: 1;
-}
-
-.cart-item-details h2 {
-    margin: 0;
+/* Optional: Make the cards in the row have the same height */
+.row {
+    display: flex; /* Use flexbox for rows */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }

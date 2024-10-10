@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getPropertiesByProductId } from '../services/apiService'; 
-import axios from 'axios'; // Import axios
+import { createOrder } from '../services/apiService';
+import axios from 'axios'; 
 import '../styles/ProductPropertiesPage.css';
-
+import { useUser } from '../UserContext';
 const PropertyForm = () => {
-    const [properties, setProperties] = useState([]);
-    const location = useLocation();
+    const location = useLocation(); // Correctly use useLocation inside the component
     const navigate = useNavigate();
-    const imageUrl = location.state?.imageUrl; // Retrieve imageUrl from navigation state
-    const product = location.state?.product; // Retrieve product object from navigation state
-    const productId = product?.productId; // Retrieve productId
-    const categoryName = product?.category?.categoryName; // Retrieve category name
-    const ProductName=product?.ProductName;
+    const [properties, setProperties] = useState([]);
+    const [successMessage, setSuccessMessage] = useState(''); // State for success message
+    const [errorMessage, setErrorMessage] = useState(''); // State for error message
+    // Extracting values from location state
+    const imageUrl = location.state?.imageUrl;
+    const product = location.state?.product;
+    const productId = product?.productId;
+    const categoryName = product?.category?.categoryName;
+    //const username = location.state?.username; // Getting username here
+    const { username } = useUser();
+    //console.log('proproperties',username);
 
     useEffect(() => {
-        // Check if productId is available and category is not 'stationary'
+        // if (username) {
+        //     console.log('Username:', username);
+        // } else {
+        //     console.log('Username is not defined');
+        // }
+        
+        // Fetch properties if productId and categoryName are valid
         if (productId && categoryName !== 'Office And Stationary') {
-            // Fetch properties only if the category is not 'stationary'
             getPropertiesByProductId(productId)
                 .then(data => {
                     setProperties(data);
@@ -26,7 +37,7 @@ const PropertyForm = () => {
                     console.error('There was an error fetching the properties!', error);
                 });
         }
-    }, [productId, categoryName]); // Add categoryName to dependency array
+    }, [productId, categoryName]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -35,28 +46,40 @@ const PropertyForm = () => {
         formData.forEach((value, key) => {
             data[key] = value;
         });
-        
+
+        const capturedProperties = {}; // Changed to avoid confusion with state variable
+
+        // Populate capturedProperties from the fetched properties
+        properties.forEach(property => {
+            // Check if the form data has a value for this property
+            if (data[property.propertyName]) {
+                capturedProperties[property.propertyName] = data[property.propertyName];
+            }
+        });
+    
+        console.log("Captured Properties:", capturedProperties); // Log the captured properties
+    
         // Construct order details DTO
         const orderDetails = {
-            productId: productId,
-            quantity: parseInt(data.quantity), // Ensure quantity is a number
-            properties: JSON.stringify({
-                intensity: data.Intensity,
-                coffee_type: data.coffee_type,
-                sugar_preference: data.sugar_preference
-            }),
-            customPreferences: data.customTextarea
+            orderDetailsId:"00000000-0000-0000-0000-000000000000",
+            productId,
+            quantity: parseInt(data.quantity),
+            properties: JSON.stringify(capturedProperties), // Stringify the properties
+            customPreferences: data.customTextarea,
+            username
         };
+        console.log("Order Details:", orderDetails);
 
         try {
-            const response = await axios.post('https://localhost:7242/api/Products/CreateOrderDetails', orderDetails);
-            console.log('Order created successfully:', response.data);
-            alert('Order created successfully!');
-            // Navigate to the cart or confirmation page
-            navigate('/cart', { state: { orderDetails: response.data, product, imageUrl } });
+            const response = await createOrder(orderDetails); // Use your createOrder service
+            console.log('Order created successfully:', response);
+            setSuccessMessage('Order created successfully!'); // Set success message
+            setTimeout(() => {
+                navigate('/cart', { state: { orderDetails: response, product, imageUrl } });
+            }, 2000);
         } catch (error) {
             console.error('Error creating order:', error);
-            // You can show an error message to the user here if needed
+            setErrorMessage('Error creating order. Please try again.'); // Set error message
         }
     };
 
@@ -86,6 +109,7 @@ const PropertyForm = () => {
                         ))}
                     </div>
                 );
+
             default:
                 return (
                     <input type="text" name={property.propertyName} className="form-control" required />
@@ -132,6 +156,9 @@ const PropertyForm = () => {
 
                 <button type="submit" className="btn btn-primary">Submit Order</button>
             </form>
+            {successMessage && <div className="alert alert-success mt-3">{successMessage}</div>}
+            {/* Display error message with Bootstrap styles */}
+            {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
         </div>
     );
 };

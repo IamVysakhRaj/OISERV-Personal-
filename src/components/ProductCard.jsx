@@ -7,10 +7,10 @@ const ProductCard = ({ title, imageUrl, product }) => {
 
     const handleClick = () => {
         console.log('Navigating with product:', product);
-        const categoryName = product.category ? product.category.categoryName : ''; 
+        const categoryName = product.category ? product.category.categoryName : ''; // Adjust based on actual structure
      
         console.log('Category Name:', categoryName);
-        navigate('/productproperties',{ state: { product, imageUrl }}); 
+            navigate('/productproperties',{ state: { product, imageUrl }}); // Redirect to ProductPropertiesPage
      };
      
     

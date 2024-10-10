@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { getProductsByCategory } from '../services/apiService'; 
 import ProductsList from './ProductsList';
+import { useUser } from '../UserContext';
 // import CommonCard from '../components/commoncard';
 const OfficeAndStationeryPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const { username } = useUser();
+    console.log(username);
     useEffect(() => {
+        console.log('Username:', username);
         const fetchProducts = async () => {
             try {
                 const data = await getProductsByCategory('Office And Stationary'); // Ensure this matches your API

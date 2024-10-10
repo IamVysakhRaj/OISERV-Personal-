@@ -2,15 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/nav.css'
+import { useUser } from '../UserContext';
 import {  faHome } from '@fortawesome/free-solid-svg-icons'; // Import the user and other icons
 const Navbar = () => {
+    const { username } = useUser();
     return (
         <nav className='navbar-home'>
             <h1 style={styles.title}>OIServe</h1>
             <ul style={styles.navList}>
             {/* Welcome User */}
                 <li style={styles.navItem}>
-                    <Link to="/home" style={styles.link}>
+                    <Link to={`/${username}`} style={styles.link}>
                         <FontAwesomeIcon icon={faHome} style={styles.icon} /> 
                     </Link>
                 </li>

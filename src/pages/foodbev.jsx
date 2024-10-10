@@ -3,14 +3,18 @@ import { getProductsByCategory } from '../services/apiService';
 import ProductsList from './ProductsList';
 import '../../src/styles/foodbev.css';
 import { useNavigate } from 'react-router-dom';
-
+import { useUser } from '../UserContext';
+//import { useLocation } from 'react-router-dom';
 const FoodAndBeveragesPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-
+    const { username } = useUser();
+    //console.log(username);
+    
     useEffect(() => {
+        //console.log('Username:', username);
         const fetchProducts = async () => {
             try {
                 const data = await getProductsByCategory('FoodAndBeverages');

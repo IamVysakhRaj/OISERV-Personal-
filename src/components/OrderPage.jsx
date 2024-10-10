@@ -27,6 +27,8 @@ const OrderPage = () => {
     if (!product) {
         return <div>Product not found</div>;
     }
+    // const { username } = useUser();
+    // console.log(username);
 
     return (
         <div className="OrderPage">

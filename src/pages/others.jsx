@@ -3,23 +3,24 @@ import query from '../assets/Images/query.jpg';
 import '../styles/others.css';
 import { submitAdditionalRequirement } from '../services/apiService';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../UserContext';
 const Others = () => {
     const [message, setMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-
+    const { username } = useUser();
     const handleSubmit = async (event) => {
         event.preventDefault();
         setSuccessMessage(''); // Reset success message
         setErrorMessage('');   // Reset error message
 
         try {
-            const result = await submitAdditionalRequirement(message);
+            const result = await submitAdditionalRequirement(message,username);
             setSuccessMessage('Your requirement has been submitted successfully! and admin will contact you soon'); // Set success message
             setMessage(''); // Clear textarea after submission
             setTimeout(() => {
-                navigate('/home'); // Change to your desired route
+                navigate(`/${username}`); // Change to your desired route
             }, 2000); 
         } catch (error) {
             setErrorMessage('There was an error submitting your requirement. Please try again.'); // Set error message
@@ -33,7 +34,7 @@ const Others = () => {
                 <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Enter Cab details/additional requirements..."
+                    placeholder="additional requirements..."
                     className="others-textarea"
                 ></textarea>
                 <button type="submit" className="others-submit-btn">
