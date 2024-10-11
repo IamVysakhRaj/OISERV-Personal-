@@ -7,7 +7,7 @@ import FoodAndBeveragesPage from './pages/foodbev';
 import OfficeAndStationeryPage from './pages/offandsta';
 import { faRandom } from '@fortawesome/free-solid-svg-icons';
 import Others from './pages/others';
-import OrderPage from './components/orderPage';
+import OrderPage from './components/OrderPage';
 import ProductsList from './pages/ProductsList';
 import ProductPropertyPage from './components/ProductPropertiesPage';
 import CartPage from './components/CartPage';
