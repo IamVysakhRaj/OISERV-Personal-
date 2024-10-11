@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/OISERV-Personal/',  // Correct base URL for GitHub Pages deployment
   build: {
     rollupOptions: {
-      external: ['react-router-dom'],  // Externalize this module to avoid resolution errors
+      external: ['react-router-dom', '@fortawesome/free-solid-svg-icons'],  // Externalize this module to avoid resolution errors
     },
   },
 });
