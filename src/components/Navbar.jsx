@@ -32,7 +32,6 @@ const styles = {
     title: {
         margin: '1.5rem',
         fontSize: '1.5rem',
-        margin:'1.5rem'
         
     },
     navList: {
