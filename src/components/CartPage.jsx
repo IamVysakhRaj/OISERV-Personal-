@@ -91,7 +91,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import '../styles/CartPage.css'; 
+import '../styles/Cartpage.css'; 
 import { getOrdersByUser, deleteOrder, getCabBookingsByUser, getRequestsByUsername, deleteCab } from '../services/apiService'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faTrash, faShoppingCart, faCar } from '@fortawesome/free-solid-svg-icons';
