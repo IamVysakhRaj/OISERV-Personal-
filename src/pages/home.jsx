@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../components/homeCard';
-import '../styles/Home.css';
+import '../styles/home.css';
 
 import foodAndBeveragesImage from '../assets/Images/foodandbeverages.jpg';
 import officeAndStationaryImage from '../assets/Images/officeandstationary.jpg';
