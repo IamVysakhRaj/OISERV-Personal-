@@ -17,7 +17,7 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li style={styles.navItem}>
-                    <Link to="/cart" style={styles.link}>
+                    <Link to="OISERV-Personal/cart" style={styles.link}>
                         <button className="btn btn-primary">My Orders</button>
                     </Link>
                 </li>

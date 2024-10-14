@@ -25,19 +25,19 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/:username" element={<Home />} />
+                <Route path="/OISERV-Personal/:username" element={<Home />} /> 
+                {/* use this to stay in user */}
                 <Route path="/food-and-beverages" element={<FoodAndBeveragesPage />} /> 
                 <Route path="/office&stationary" element={< OfficeAndStationeryPage/>} /> 
                 <Route path="/others"element={<Others/>}/>
-                {/* <Route path="/orderpage" element={<OrderPage />} /> */}
-                
+                {/* <Route path="/OISERV-Personal/orderpage" element={<OrderPage />} /> */}
                 <Route path="/ProductsList"element={<ProductsList/>}/>
                 <Route path="/productproperties"element={<ProductPropertyPage/>}/>
-                <Route path="/cart" element={<CartPage />} />
-                <Route path="/admin/orders" element={<AdminOrders />} />
+                <Route path="/OISERV-Personal/cart" element={<CartPage />} />
+                <Route path="OISERV-Personal/admin/orders" element={<AdminOrders />} />
                 <Route path="/cabbooking" element={<CabBookingForm />} />
-                <Route path="admin/cabbookings" element={<AdminCabRequests />} />
-                <Route path="admin/additionalreq" element={<AdditionalRequirementsPage />} />
+                <Route path="OISERV-Personal/admin/cabbookings" element={<AdminCabRequests />} />
+                <Route path="OISERV-Personal/admin/additionalreq" element={<AdditionalRequirementsPage />} />
                 </Routes>
         </Router>
         </UserProvider>

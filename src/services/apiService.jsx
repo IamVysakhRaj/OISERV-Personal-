@@ -75,15 +75,7 @@ export const getAllOrders = async () => {
     }
 };
 
-export const getOrdersByUser = async (username) => {
-    try {
-        const response = await axios.get(`${API_URL}/orders/${username}`);
-        return response.data; // Return the user's order details
-    } catch (error) {
-        console.error('Error fetching orders by user:', error);
-        throw error; // Rethrow the error for handling in the component
-    }
-};
+
 
 export const markOrderAsDelivered = async (orderId) => {
     try {
@@ -118,6 +110,27 @@ export const createCabRequest = async (cabRequestData) => {
         throw new Error('Failed to create cab request'); // Throw error for handling in the calling component
     }
 };
+export const getOrdersByUser = async (username) => {
+    try {
+        const response = await axios.get(`${API_URL}/orders/${username}`);
+        return response.data; // Return the user's order details
+    } catch (error) {
+        console.error('Error fetching orders by user:', error);
+        throw error; // Rethrow the error for handling in the component
+    }
+};
+export const getCabBookingsByUser = async (username) => {
+    try {
+        const response = await axios.get(`${CAB_URL}/GetCabByUsername/${username}`);
+        console.log(response.data);
+        return response.data || []; // Return an empty array if no data
+    } catch (error) {
+        console.error('Error fetching cab bookings:', error.response?.data || error.message);
+        return []; // Return an empty array on error, so it doesn't break the component
+    }
+};
+
+
 export const getAllCabRequests = async () => {
     try {
         const response = await axios.get(`${CAB_URL}/GetCab`);
@@ -137,16 +150,7 @@ export const updateCabApprovalStatus = async (cabId, isApproved) => {
         throw new Error('Failed to update cab approval status');
     }
 };
-export const getCabBookingsByUser = async (username) => {
-    try {
-        const response = await axios.get(`${CAB_URL}/GetCabByUsername/${username}`);
-        console.log(response.data)
-        return response.data; // Return the array of cab bookings
-    } catch (error) {
-        console.error('Error fetching cab bookings:', error.response?.data || error.message);
-        throw new Error('Failed to fetch cab bookings');
-    }
-};
+
 
 export const deleteCab = async (cabId) => {
     try {

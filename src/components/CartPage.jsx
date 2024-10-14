@@ -87,7 +87,6 @@
 // };
 
 // export default CartPage;
-
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../UserContext';
@@ -100,7 +99,7 @@ import { faTrash, faShoppingCart, faCar } from '@fortawesome/free-solid-svg-icon
 const CartPage = () => {
     const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
-    const [cabBookings, setCabBookings] = useState([]);
+    const [cabBookings, setCabBookings] = useState([]); // Initialize as an empty array
     const [additionalRequests, setAdditionalRequests] = useState([]); // State for additional requests
     const [error, setError] = useState(null);
     const [successMessage, setSuccessMessage] = useState(null); 
@@ -116,7 +115,7 @@ const CartPage = () => {
                     const unfulfilledOrders = ordersData.filter(order => !order.isDelivered);
                     
                     setOrders(unfulfilledOrders);
-                    setCabBookings(cabBookingsData); 
+                    setCabBookings(cabBookingsData || []);  // Ensure it's always an array
                     setAdditionalRequests(requestsData);
                 } catch (err) {
                     setError('Failed to fetch data. ' + err.message);
@@ -128,7 +127,7 @@ const CartPage = () => {
     }, [username]);
 
     const handleBackToHome = () => {
-        navigate(`/${username}`);
+        navigate(`/OISERV-Personal/${username}`);
     };
 
     const handleDeleteOrder = async (orderId) => {
@@ -205,7 +204,6 @@ const CartPage = () => {
                                     <p className="card-text text-muted"><strong>Date:</strong> {new Date(booking.date).toLocaleDateString()}</p>
                                     <p className="card-text text-muted"><strong>Time:</strong> {booking.time}</p>
                                     <p className="card-text text-muted"><strong>Cab Type:</strong> {booking.vehiclePreference}</p>
-                                    {/* <p className="card-text text-muted"><strong>Cab ID:</strong> {booking.cabId}</p> */}
                                     <p className="card-text text-muted">
                                         <strong>Status:</strong> {booking.isApproved ? 'Approved' : 'Pending'}
                                     </p>
