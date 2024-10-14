@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Use Routes instead of Switch
 import Navbar from './components/Navbar';
-import About from './pages/about';
+
 import Home from './pages/home';
 import FoodAndBeveragesPage from './pages/foodbev';
 import OfficeAndStationeryPage from './pages/offandsta';
@@ -24,7 +24,7 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
+                
                 <Route path="/OISERV-Personal/:username" element={<Home />} /> 
                 {/* use this to stay in user */}
                 <Route path="/food-and-beverages" element={<FoodAndBeveragesPage />} /> 
