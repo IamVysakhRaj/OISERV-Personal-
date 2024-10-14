@@ -23,7 +23,7 @@ function App() {
         <Router>
             <Navbar />
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/OISERV-Personal" element={<Home />} />
                 
                 <Route path="/OISERV-Personal/:username" element={<Home />} /> 
                 {/* use this to stay in user */}

@@ -1,7 +1,7 @@
 {
   "name": "oiserve",
   "private": true,
-  "homepage": "https://IamVysakhRaj.github.io/OISERV-Personal",
+  "homepage": ".",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
