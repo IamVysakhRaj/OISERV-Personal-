@@ -23,9 +23,9 @@ function App() {
         <Router>
             <Navbar />
             <Routes>
-                <Route path="/OISERV-Personal" element={<Home />} />
+                <Route path="" element={<Home />} />
                 
-                <Route path="/OISERV-Personal/:username" element={<Home />} /> 
+                <Route path="/:username" element={<Home />} /> 
                 {/* use this to stay in user */}
                 <Route path="/food-and-beverages" element={<FoodAndBeveragesPage />} /> 
                 <Route path="/office&stationary" element={< OfficeAndStationeryPage/>} /> 
@@ -33,11 +33,11 @@ function App() {
                 {/* <Route path="/OISERV-Personal/orderpage" element={<OrderPage />} /> */}
                 <Route path="/ProductsList"element={<ProductsList/>}/>
                 <Route path="/productproperties"element={<ProductPropertyPage/>}/>
-                <Route path="/OISERV-Personal/cart" element={<CartPage />} />
-                <Route path="OISERV-Personal/admin/orders" element={<AdminOrders />} />
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/admin/orders" element={<AdminOrders />} />
                 <Route path="/cabbooking" element={<CabBookingForm />} />
-                <Route path="OISERV-Personal/admin/cabbookings" element={<AdminCabRequests />} />
-                <Route path="OISERV-Personal/admin/additionalreq" element={<AdditionalRequirementsPage />} />
+                <Route path="/admin/cabbookings" element={<AdminCabRequests />} />
+                <Route path="/admin/additionalreq" element={<AdditionalRequirementsPage />} />
                 </Routes>
         </Router>
         </UserProvider>
