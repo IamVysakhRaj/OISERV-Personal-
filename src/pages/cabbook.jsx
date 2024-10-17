@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Optional: Import Bootstrap JS (if needed for components like modals, dropdowns)
 import '../styles/cabbooking.css'; // Custom styles
 import { createCabRequest } from '../services/apiService';
 import { useUser } from '../UserContext';
 import { useNavigate } from 'react-router-dom';
+
 const CabBookingForm = () => {
     const { username } = useUser();
     const [formData, setFormData] = useState({
@@ -19,6 +21,7 @@ const CabBookingForm = () => {
 
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -31,8 +34,8 @@ const CabBookingForm = () => {
             setMessage('Booking successful!');
             // Reset the form data
             setTimeout(() => {
-                navigate('/cart');  // Simply redirect to the cart
-            }, 2000); // 
+                navigate('/cart'); // Simply redirect to the cart
+            }, 2000); // Delay for 2 seconds before redirecting
             setFormData({
                 cabId: '00000000-0000-0000-0000-000000000000',
                 pickup: '',
@@ -41,7 +44,7 @@ const CabBookingForm = () => {
                 time: '',
                 passengerCount: '',
                 vehiclePreference: '',
-                username:username
+                username: username
             });
         } catch (error) {
             setMessage('Error occurred while booking cab. Please try again.');
@@ -50,14 +53,14 @@ const CabBookingForm = () => {
 
     return (
         <div style={{
-            backgroundImage: 'url("https://th.bing.com/th/id/R.64dbf9d2ca128a1b2b8cbe781874fb1e?rik=lP7GEkO76xzOQA&riu=http%3a%2f%2fcdn.wccftech.com%2fwp-content%2fuploads%2f2017%2f03%2fGoogle-Maps.jpg&ehk=xcHOr5BQ%2b6aPyq162KQL96IhP1d6RiHUqhGvH5Zu7xg%3d&risl=&pid=ImgRaw&r=0")',
+            backgroundImage: 'url("https://www.cychacks.com/wp-content/uploads/2019/09/Taxi-Booking.jpg")',
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
         }}>
-            <div className="container mt-5">
+            <div className="container mt-6">
                 <h1 className="text-center text-white mb-4">Cab Booking Form</h1>
                 
-                <form onSubmit={handleSubmit} className="bg-light p-4 rounded shadow">
+                <form onSubmit={handleSubmit} className="bg-light p-4 rounded shadow transparent-form">
                     <div className="mb-3">
                         <label htmlFor="pickup" className="form-label">From:</label>
                         <input

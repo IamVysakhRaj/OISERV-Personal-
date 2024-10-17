@@ -1,9 +1,7 @@
-/* CabBookingForm.css */
-
 .container {
     max-width: 600px;
     margin: auto;
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -17,15 +15,7 @@
     border-radius: 4px;
 }
 
-.submitButton {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 16px;
-}
+
 .text-white {
     --bs-text-opacity: 1;
     color: rgb(5 5 5) !important;
